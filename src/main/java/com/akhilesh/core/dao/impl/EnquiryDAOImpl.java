@@ -40,6 +40,7 @@ public class EnquiryDAOImpl implements EnquiryDAO {
                         .setLastName(rs.getString("last_name"))
                         .setEmail(rs.getString("email"))
                         .setContactNo(rs.getString("contact_no"))
+                        .setMessage(rs.getString("message"))
                         .setCourse(new Course(rs.getInt("course_id")))
                         .setStatus(new EnquiryStatus(rs.getInt("status")))
                         .build();
@@ -60,6 +61,7 @@ public class EnquiryDAOImpl implements EnquiryDAO {
                         .setLastName(rs.getString("last_name"))
                         .setEmail(rs.getString("email"))
                         .setContactNo(rs.getString("contact_no"))
+                        .setMessage(rs.getString("message"))
                         .setCourse(new Course(rs.getInt("course_id")))
                         .setStatus(new EnquiryStatus(rs.getInt("status")))
                         .build();
@@ -69,17 +71,17 @@ public class EnquiryDAOImpl implements EnquiryDAO {
 
     @Override
     public int insert(Enquiry t) throws ClassNotFoundException, SQLException {
-        String sql = "insert into enquiries(first_name, last_name, email, contact_no, course_id, status )"
-                + "values (?,?,?,?,?,?)";
+        String sql = "insert into enquiries(first_name, last_name, email, contact_no, message, course_id, status )"
+                + "values (?,?,?,?,?,?,?)";
         return jdbcTemplate.update(sql, new Object[]{
-            t.getFirstName(), t.getLastName(), t.getEmail(), t.getContactNo(), t.getCourse().getId(),
-            t.getStatus().getId()
+            t.getFirstName(), t.getLastName(), t.getEmail(), t.getContactNo(), t.getMessage(),
+            t.getCourse().getId(),t.getStatus().getId()
         });
     }
 
     @Override
     public int update(Enquiry t) throws ClassNotFoundException, SQLException {
-       return 0;
+        return 0;
     }
 
     @Override

@@ -11,16 +11,16 @@ import com.akhilesh.core.entity.EnquiryStatus;
 public class EnquiryBuilder {
 
     private int id;
-    private String firstName, lastName, email, contactNo;
+    private String firstName, lastName, email, contactNo, message;
     private Course course;
     private EnquiryStatus status;
-    
-    private EnquiryBuilder(){
-        
+
+    private EnquiryBuilder() {
+
     }
-    
-    public static EnquiryBuilder create(){
-        return  new EnquiryBuilder();
+
+    public static EnquiryBuilder create() {
+        return new EnquiryBuilder();
     }
 
     public EnquiryBuilder setId(int id) {
@@ -48,6 +48,11 @@ public class EnquiryBuilder {
         return this;
     }
 
+    public EnquiryBuilder setMessage(String message) {
+        this.message = message;
+        return this;
+    }
+
     public EnquiryBuilder setCourse(Course course) {
         this.course = course;
         return this;
@@ -57,8 +62,8 @@ public class EnquiryBuilder {
         this.status = status;
         return this;
     }
-    
-    public Enquiry build(){
+
+    public Enquiry build() {
         return new Enquiry(id, firstName, lastName, email, contactNo, course, status);
     }
 

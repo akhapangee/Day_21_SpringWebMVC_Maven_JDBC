@@ -13,8 +13,8 @@ import org.springframework.web.bind.annotation.RequestMethod;
  * @author Akhilesh
  */
 @Controller
-@RequestMapping(value = "/")
-public class DefaultController {
+@RequestMapping(value = "/course")
+public class CourseController {
 
     @Autowired
     private CourseDAO courseDAO;
@@ -22,10 +22,11 @@ public class DefaultController {
     @RequestMapping(method = RequestMethod.GET)
     public String index(Model model) {
         try {
-            model.addAttribute("courses",courseDAO.getAll());
+            model.addAttribute("courses", courseDAO.getAll());
         } catch (ClassNotFoundException | SQLException ex) {
             System.out.println(ex.getMessage());
         }
         return "index";
     }
+
 }
